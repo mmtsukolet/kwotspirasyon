@@ -1,4 +1,5 @@
 <?php
+
 require_once 'models/quotes.php';
 // Kickstart the framework
 $f3=require('lib/base.php');
@@ -83,6 +84,8 @@ $f3->route('GET /userref',
 /** @var Quotes [description] */
 $f3->route('GET /api/quotes/random',
 	function($f3) {
+		header('Access-Control-Allow-Origin: *');
+		header('Content-Type: application/json');
 		$quotes = new Quotes;
 		$data = $quotes->masterData();
 		$randGen = rand(101,103);
