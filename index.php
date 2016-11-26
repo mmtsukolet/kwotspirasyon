@@ -1,5 +1,5 @@
 <?php
-
+require_once 'models/quotes.php';
 // Kickstart the framework
 $f3=require('lib/base.php');
 
@@ -78,5 +78,22 @@ $f3->route('GET /userref',
 		echo View::instance()->render('layout.htm');
 	}
 );
+
+
+/** @var Quotes [description] */
+$f3->route('GET /api/quotes/random',
+	function($f3) {
+		$quotes = new Quotes;
+		$data = $quotes->masterData();
+	}
+);
+
+$f3->route('GET /quotes/@id',
+	function($f3) {
+		$quotes = (new Quotes)->getById($f3->get('PARAMS.id'));
+		echo json_encode($quotes);
+	}
+);
+
 
 $f3->run();
