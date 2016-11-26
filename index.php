@@ -88,7 +88,7 @@ $f3->route('GET /api/quotes/random',
 		header('Content-Type: application/json');
 		$quotes = new Quotes;
 		$data = $quotes->masterData();
-		$randGen = rand(101,103);
+		$randGen = rand(101, 101 + count($data) - 1);
         echo json_encode($data[$randGen]);
 	}
 );
