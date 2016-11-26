@@ -85,13 +85,8 @@ $f3->route('GET /api/quotes/random',
 	function($f3) {
 		$quotes = new Quotes;
 		$data = $quotes->masterData();
-
-		$randGen=rand(101,103);
-
-        var_dump($data[$randGen]);
-		
-
-
+		$randGen = rand(101,103);
+        echo json_encode($data[$randGen]);
 	}
 );
 
